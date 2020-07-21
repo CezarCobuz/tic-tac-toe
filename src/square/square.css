@@ -4,3 +4,7 @@
     background-color:coral;
     margin: 10px;
 }
+
+.wrapperHovered:hover {
+    background-color: cornflowerblue;
+}
