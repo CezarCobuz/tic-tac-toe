@@ -1,7 +1,8 @@
 import "./grid.css"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
+import { checkWinner } from "../game/winner"
 import { SquareComponent } from "../square/square"
 
 export const GridComponent = ({ dimension = 3 }) => {
@@ -9,6 +10,11 @@ export const GridComponent = ({ dimension = 3 }) => {
   const [gridValues, setGridValues] = useState(
     new Array(dimension).fill(null).map(() => new Array(dimension).fill(null))
   )
+  useEffect(() => {
+    if (turn > (dimension - 1) * 2) {
+      checkWinner()
+    }
+  }, [turn])
 
   const handleChange = (row, column) => {
     let value

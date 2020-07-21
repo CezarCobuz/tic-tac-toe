@@ -3,7 +3,6 @@ import "./square.css"
 import React, { useState } from "react"
 
 export const SquareComponent = ({ value, onPress = () => {} }) => {
-  console.log("+++ value", value)
 
   return (
     <div
