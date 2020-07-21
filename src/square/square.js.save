@@ -1,0 +1,30 @@
+rimport "./square.css"
+
+import React, { useState } from "react"
+
+const handlePress = (position, turn, onPress) => {
+  console.log("+++ turn", turn)
+  
+  console.log('+++ position', position)
+
+  if (turn === "X") {
+    onPress("O")
+  } else {
+    onPress("X")
+  }
+}
+
+export const SquareComponent = ({ position, turn, onPress = () => {} }) => {
+  const [filled, setFilled] = useState(null)
+  return (
+    <div
+      className="wrapper"
+      onClick={() => {
+        handlePress(position, turn, onPress)
+        setFilled(true)
+      }}
+    >
+      {filled && <p> {turn}</p>}
+    </div>
+  )
+}
