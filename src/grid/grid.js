@@ -12,24 +12,25 @@ export const GridComponent = ({ dimension = 3 }) => {
   )
   useEffect(() => {
     if (turn > (dimension - 1) * 2) {
-      checkWinner()
+      checkWinner(gridValues)
     }
   }, [turn])
 
   const handleChange = (row, column) => {
     let value
     if (turn % 2 === 0) {
-      value = "X"
+      // Player X
+      value = 1
     } else {
-      value = "O"
+      // Player O
+      value = -1
     }
-    setTurn(turn + 1)
     let copy = [...gridValues]
     copy[row][column] = value
     setGridValues(copy)
-  }
 
-  console.log("+++ gridValues", gridValues)
+    setTurn(turn + 1)
+  }
 
   return (
     <div className="gameContainer">
