@@ -7,23 +7,22 @@ const translateToXO = (value) => {
   let translatedValue
 
   if (value === 1) {
-    translatedValue = 'X'
+    translatedValue = "X"
   } else {
-    translatedValue = 'O'
+    translatedValue = "O"
   }
 
   return translatedValue
 }
 
 export const SquareComponent = ({ value, onPress = () => {} }) => {
-
   return (
     <div
       key={value}
-      className={`wrapper ${value !== null ? '' : 'wrapperHovered'}`}
-      onClick={value === null ? () => onPress() : () => {}}
+      className={`wrapper ${value !== 0 ? "" : "wrapperHovered"}`}
+      onClick={value === 0 ? () => onPress() : () => {}}
     >
-      {value && <p> {translateToXO(value)}</p>}
+      {value !== 0 && <p> {translateToXO(value)}</p>}
     </div>
   )
 }
