@@ -1,11 +1,5 @@
 /** x, y last position filled */
 const checkWinner = (gridValues, turn, x, y, dimension) => {
-  console.log("+++ gridValues", gridValues)
-  console.log("+++ turn", turn)
-  console.log("+++ x", x)
-  console.log("+++ y", y)
-  console.log("+++ dimension", dimension)
-
   let sumHorizontal = 0
   let sumVertical = 0
 
@@ -47,9 +41,6 @@ const checkWinner = (gridValues, turn, x, y, dimension) => {
   ) {
     alert("O WON")
   }
-
-  console.log("+++ sumSecondaryDiagonal", sumSecondaryDiagonal)
-  console.log("+++ sumMainDiagonal", sumMainDiagonal)
 }
 
 export const handleChange = (

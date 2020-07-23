@@ -1,4 +1,4 @@
-import "./square.css"
+import "./cell.css"
 
 import React, { useState } from "react"
 
@@ -15,14 +15,14 @@ const translateToXO = (value) => {
   return translatedValue
 }
 
-export const SquareComponent = ({ value, onPress = () => {} }) => {
+export const CellComponent = ({ value, onPress = () => {} }) => {
   return (
     <div
       key={value}
       className={`wrapper ${value !== 0 ? "" : "wrapperHovered"}`}
       onClick={value === 0 ? () => onPress() : () => {}}
     >
-      {value !== 0 && <p> {translateToXO(value)}</p>}
+      {value !== 0 && <p className='symbol'> {translateToXO(value)}</p>}
     </div>
   )
 }
