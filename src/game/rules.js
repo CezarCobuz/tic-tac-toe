@@ -10,7 +10,8 @@ export const handleChange = (
   setTurn,
   gridValues,
   setGridValues,
-  setWinner
+  setWinner,
+  selectedSymbol = null
 ) => {
   const dimension = gridValues.length
 
@@ -18,13 +19,21 @@ export const handleChange = (
 
   // This does not apply for Order & Chaos -> recycle only for changing the color
   // TODO: Refactor bellow condition + values so it applies to Order & Chaos (just put the X / O value) and check consecutive
-  if (turn % 2 === 0) {
-    // Player X
-    value = 1
-  } else {
-    // Player O
-    value = -1
+  
+  if (gameMode === "Classic") {
+    if (turn % 2 === 0) {
+      // Player X
+      value = 'X'
+    } else {
+      // Player O
+      value = 'O'
+    }
   }
+
+  if (gameMode === 'Order & Chaos') {
+    value = selectedSymbol
+  }
+
   let copyGridValues = [...gridValues]
   copyGridValues[x][y] = value
 

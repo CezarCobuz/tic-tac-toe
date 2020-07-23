@@ -4,18 +4,6 @@ import React from "react"
 
 import { useWindowDimensions } from "../utils/dimensions"
 
-const translateToXO = (value) => {
-  let translatedValue
-
-  if (value === 1) {
-    translatedValue = "X"
-  } else {
-    translatedValue = "O"
-  }
-
-  return translatedValue
-}
-
 export const CellComponent = ({ value, onPress = () => {} }) => {
   const { height, width } = useWindowDimensions()
 
@@ -29,8 +17,7 @@ export const CellComponent = ({ value, onPress = () => {} }) => {
     >
       {value !== 0 && (
         <p className={`symbol ${value === -1 ? "symbolContrast" : ""}`}>
-          {" "}
-          {translateToXO(value)}
+          {value}
         </p>
       )}
     </div>

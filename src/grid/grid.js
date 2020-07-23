@@ -15,6 +15,10 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
     new Array(dimension).fill(0).map(() => new Array(dimension).fill(0))
   )
 
+  /** For Order and Chaos */
+  const [selectedSymbol, setSelectedSymbol] = useState('X')
+  console.log('+++ selectedSymbol', selectedSymbol)
+
   useEffect(() => {
     setGridValues(
       new Array(dimension).fill(0).map(() => new Array(dimension).fill(0))
@@ -43,7 +47,8 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
                     setTurn,
                     gridValues,
                     setGridValues,
-                    setWinner
+                    setWinner,
+                    selectedSymbol
                   )
                 }
                 value={gridValues[lineIndex][columnIndex]}
@@ -56,6 +61,8 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
       {gameMode === "Order & Chaos" && (
         <SymbolSelector
           player={turn % 2 === 0 ? "Order" : "Chaos"}
+          selectedValue={selectedSymbol}
+          setSelectedValue={setSelectedSymbol}
         />
       )}
     </div>

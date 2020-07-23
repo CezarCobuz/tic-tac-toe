@@ -7,18 +7,14 @@ export const SymbolSelectorItem = ({
   isSelected = false,
   onPress = () => {},
 }) => {
-
   return (
     <div
       className={`selectorItemWrapper ${
         isSelected ? "selectedSelectorItem" : null
       }`}
-      onClick={() => {
-        console.log("SymbolSelectorItem was clicked")
-        onPress()
-      }}
+      onClick={() => onPress()}
     >
-      <p className='symbolSelectorItemText'>{value}</p>
+      <p className="symbolSelectorItemText">{value}</p>
     </div>
   )
 }

@@ -4,10 +4,8 @@ import React, { useState } from "react"
 
 import { SymbolSelectorItem } from "./symbol-selector.item"
 
-export const SymbolSelector = ({ player }) => {
-  const [selectedValue, setSelectedValue] = useState(null)
-
-  //   console.log('+++ selectedValue', selectedValue)
+export const SymbolSelector = ({ player, selectedValue, setSelectedValue }) => {
+  console.log("+++ selectedValue", selectedValue)
   return (
     <div className={"symbolSelectorWrapper"}>
       <p>{player} turn</p>
