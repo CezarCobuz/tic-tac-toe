@@ -15,8 +15,6 @@ const switchGameMode = (currentGameMode, setter) => {
 const App = () => {
   const [gameMode, setGameMode] = useState("Order & Chaos")
 
-  console.log("+++ gameMode", gameMode)
-
   return (
     <div className="App">
       <button onClick={() => switchGameMode(gameMode, setGameMode)}>

@@ -8,7 +8,6 @@ export const SymbolSelectorItem = ({
   onPress = () => {},
 }) => {
 
-  console.log("+++ isSelected", isSelected)
   return (
     <div
       className={`selectorItemWrapper ${

@@ -36,6 +36,7 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
                 key={lineIndex + "" + columnIndex}
                 onPress={() =>
                   handleChange(
+                    gameMode,
                     lineIndex,
                     columnIndex,
                     turn,
@@ -51,7 +52,12 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
           </div>
         ))}
       </div>
-      {gameMode === "Order & Chaos" && <SymbolSelector />}
+      {/* Game mode: Order & Chaos */}
+      {gameMode === "Order & Chaos" && (
+        <SymbolSelector
+          player={turn % 2 === 0 ? "Order" : "Chaos"}
+        />
+      )}
     </div>
   )
 }
