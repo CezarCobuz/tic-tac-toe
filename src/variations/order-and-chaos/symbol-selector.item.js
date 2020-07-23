@@ -19,7 +19,7 @@ export const SymbolSelectorItem = ({
         onPress()
       }}
     >
-      <p>{value}</p>
+      <p className='symbolSelectorItemText'>{value}</p>
     </div>
   )
 }

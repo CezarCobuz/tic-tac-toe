@@ -1,16 +1,23 @@
 .selectorItemWrapper {
-  background-color: ivory;
   width: 100px;
   height: 100px;
-  border: 2px solid transparent;
+  border-radius: 5px;
+  border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .selectorItemWrapper:hover {
-  background-color: cornflowerblue;
+  background-color: mediumseagreen;
 }
 
 .selectedSelectorItem {
   border: solid;
   border-width: 2px;
   border-color: mediumseagreen;
+}
+
+.symbolSelectorItemText {
+  font-size: 40px;
 }
