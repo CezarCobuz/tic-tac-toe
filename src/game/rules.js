@@ -9,24 +9,47 @@ const checkWinner = (gridValues, turn, x, y, dimension) => {
   let sumHorizontal = 0
   let sumVertical = 0
 
+  // TODO: use [1, 2, 3, 4].reduce((a, b) => a + b, 0)
   for (let parser = 0; parser < dimension; parser++) {
-    console.log(parser)
-
     sumHorizontal += gridValues[x][parser]
     sumVertical += gridValues[parser][y]
-
-    if (sumHorizontal === dimension || sumVertical === dimension) {
-      alert("X WON")
-    }
-    if (sumHorizontal === -1 * dimension || sumVertical === -1 * dimension) {
-      alert("O WON")
-    }
-
-    // TODO: check diagonals
   }
 
-  console.log("+++ sumHorizontal", sumHorizontal)
-  console.log("+++ sumVertical", sumVertical)
+  /** Main diagonal */
+  let sumMainDiagonal = 0
+  if (x === y) {
+    for (let parser = 0; parser < dimension; parser++) {
+      sumMainDiagonal += gridValues[parser][parser]
+    }
+  }
+
+  /** Secondary diagonal */
+  let sumSecondaryDiagonal = 0
+  if (x + y === dimension - 1) {
+    for (let parser = 0; parser < dimension; parser++) {
+      sumSecondaryDiagonal += gridValues[parser][dimension - 1 - parser]
+    }
+  }
+
+  if (sumHorizontal === dimension || sumVertical === dimension) {
+    alert("X WON")
+  }
+  if (sumHorizontal === -1 * dimension || sumVertical === -1 * dimension) {
+    alert("O WON")
+  }
+
+  if (sumMainDiagonal === dimension || sumSecondaryDiagonal === dimension) {
+    alert("X WON")
+  }
+  if (
+    sumMainDiagonal === -1 * dimension ||
+    sumSecondaryDiagonal === -1 * dimension
+  ) {
+    alert("O WON")
+  }
+
+  console.log("+++ sumSecondaryDiagonal", sumSecondaryDiagonal)
+  console.log("+++ sumMainDiagonal", sumMainDiagonal)
 }
 
 export const handleChange = (
