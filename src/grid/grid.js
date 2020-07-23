@@ -19,6 +19,7 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
   const [selectedSymbol, setSelectedSymbol] = useState("X")
 
   useEffect(() => {
+    // Resetters
     setGridValues(
       new Array(dimension)
         .fill({ value: 0, color: "default" })
