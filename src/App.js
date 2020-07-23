@@ -1,13 +1,31 @@
 import "./App.css"
 
-import React from "react"
+import React, { useState } from "react"
 
 import { GridComponent } from "./grid/grid"
 
-function App() {
+const switchGameMode = (currentGameMode, setter) => {
+  if (currentGameMode === "Classic") {
+    setter("Order & Chaos")
+  } else {
+    setter("Classic")
+  }
+}
+
+const App = () => {
+  const [gameMode, setGameMode] = useState("Classic")
+
+  console.log("+++ gameMode", gameMode)
+
   return (
     <div className="App">
-      <GridComponent />
+      <button onClick={() => switchGameMode(gameMode, setGameMode)}>
+        {gameMode === "Classic"
+          ? "Switch to Order & Chaos"
+          : "Switch to Classic"}
+      </button>
+
+      <GridComponent gameMode={gameMode} />
     </div>
   )
 }

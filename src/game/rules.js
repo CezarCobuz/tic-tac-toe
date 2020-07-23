@@ -1,9 +1,9 @@
-/** x, y last position filled */
+/** x, y last position filled - for classic*/
 const checkWinner = (gridValues, turn, x, y, dimension, setWinner) => {
   let sumHorizontal = 0
   let sumVertical = 0
 
-  // TODO: use [1, 2, 3, 4].reduce((a, b) => a + b, 0)
+  // TODO: use [1, -1, 0, ... ].reduce((a, b) => a + b, 0)
   // sumHorizontal = gridValues[x].reduce((a, b) => a + b, 0)
   // sumVertical =
 
@@ -46,6 +46,7 @@ const checkWinner = (gridValues, turn, x, y, dimension, setWinner) => {
   }
 }
 
+/** TODO: ADD @param Game mode */
 export const handleChange = (
   x,
   y,
@@ -58,6 +59,8 @@ export const handleChange = (
   const dimension = gridValues.length
 
   let value
+
+  // This does not apply for Order & Chaos -> recycle only for changing the color
   if (turn % 2 === 0) {
     // Player X
     value = 1

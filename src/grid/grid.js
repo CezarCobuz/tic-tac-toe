@@ -1,16 +1,24 @@
 import "./grid.css"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { CellComponent } from "../cell/cell"
 import { handleChange } from "../game/rules"
 
-export const GridComponent = ({ dimension = 3 }) => {
+export const GridComponent = ({ gameMode = "Classic" }) => {
+  const dimension = gameMode === "Order & Chaos" ? 6 : 3
+
   const [turn, setTurn] = useState(0)
   const [winner, setWinner] = useState(null)
   const [gridValues, setGridValues] = useState(
     new Array(dimension).fill(0).map(() => new Array(dimension).fill(0))
   )
+
+  useEffect(() => {
+    setGridValues(
+      new Array(dimension).fill(0).map(() => new Array(dimension).fill(0))
+    )
+  }, [dimension])
 
   return (
     <div>
@@ -22,13 +30,13 @@ export const GridComponent = ({ dimension = 3 }) => {
       <div className="gameContainer">
         {gridValues.map((line, lineIndex) => (
           <div key={lineIndex} className="rowContainer">
-            {line.map((_square, squareIndex) => (
+            {line.map((_square, columnIndex) => (
               <CellComponent
-                key={lineIndex + "" + squareIndex}
+                key={lineIndex + "" + columnIndex}
                 onPress={() =>
                   handleChange(
                     lineIndex,
-                    squareIndex,
+                    columnIndex,
                     turn,
                     setTurn,
                     gridValues,
@@ -36,7 +44,7 @@ export const GridComponent = ({ dimension = 3 }) => {
                     setWinner
                   )
                 }
-                value={gridValues[lineIndex][squareIndex]}
+                value={gridValues[lineIndex][columnIndex]}
               />
             ))}
           </div>
