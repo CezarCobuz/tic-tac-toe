@@ -17,7 +17,6 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
 
   /** For Order and Chaos */
   const [selectedSymbol, setSelectedSymbol] = useState("X")
-  console.log("+++ selectedSymbol", selectedSymbol)
 
   useEffect(() => {
     setGridValues(
@@ -25,9 +24,10 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
         .fill({ value: 0, color: "default" })
         .map(() => new Array(dimension).fill({ value: 0, color: "default" }))
     )
+    setTurn(0)
+    setWinner(null)
+    // TODO: Game mode rather than dimension, as dimension can be the same but game mode change
   }, [dimension])
-
-  console.log("+++ gridValues", gridValues)
 
   return (
     <div>

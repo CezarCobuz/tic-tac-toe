@@ -7,6 +7,7 @@ export const SymbolSelectorItem = ({
   isSelected = false,
   onPress = () => {},
 }) => {
+  // TODO: variables color -> red for chaos, green for order?
   return (
     <div
       className={`selectorItemWrapper ${
@@ -14,7 +15,13 @@ export const SymbolSelectorItem = ({
       }`}
       onClick={() => onPress()}
     >
-      <p className="symbolSelectorItemText">{value}</p>
+      <p
+        className={`symbolSelectorItemText ${
+          isSelected ? 'selectedSelectorItemText' : null
+        }`}
+      >
+        {value}
+      </p>
     </div>
   )
 }

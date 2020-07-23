@@ -15,6 +15,7 @@
 
 .wrapperHovered:hover {
   background-color: cornflowerblue;
+  cursor: pointer;
 }
 
 .symbol {

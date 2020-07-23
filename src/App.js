@@ -17,13 +17,13 @@ const App = () => {
 
   return (
     <div className="App">
+      <GridComponent gameMode={gameMode} />
+
       <button onClick={() => switchGameMode(gameMode, setGameMode)}>
         {gameMode === "Classic"
           ? "Switch to Order & Chaos"
           : "Switch to Classic"}
       </button>
-
-      <GridComponent gameMode={gameMode} />
     </div>
   )
 }
