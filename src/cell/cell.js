@@ -22,7 +22,12 @@ export const CellComponent = ({ value, onPress = () => {} }) => {
       className={`wrapper ${value !== 0 ? "" : "wrapperHovered"}`}
       onClick={value === 0 ? () => onPress() : () => {}}
     >
-      {value !== 0 && <p className='symbol'> {translateToXO(value)}</p>}
+      {value !== 0 && (
+        <p className={`symbol ${value === -1 ? "symbolContrast" : ""}`}>
+          {" "}
+          {translateToXO(value)}
+        </p>
+      )}
     </div>
   )
 }

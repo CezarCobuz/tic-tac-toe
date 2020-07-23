@@ -18,6 +18,10 @@
   animation-duration: 0.5s;
 }
 
+.symbolContrast {
+	color:red;
+}
+
 @keyframes symbolIn {
   from {
     font-size: 1px;
