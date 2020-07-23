@@ -20,6 +20,7 @@
 
 .winnerMessage {
   font-size: 40px;
+  font-weight: bold;
   animation-name: symbolIn;
   animation-duration: 0.5s;
 }
