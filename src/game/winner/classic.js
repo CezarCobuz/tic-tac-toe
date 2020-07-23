@@ -34,15 +34,15 @@ export const checkWinnerClassic = (
   // sumVertical =
 
   for (let parser = 0; parser < dimension; parser++) {
-    sumHorizontal += valueFromXO(gridValues[x][parser])
-    sumVertical += valueFromXO(gridValues[parser][y])
+    sumHorizontal += valueFromXO(gridValues[x][parser].value)
+    sumVertical += valueFromXO(gridValues[parser][y].value)
   }
 
   /** Main diagonal */
   let sumMainDiagonal = 0
   if (x === y) {
     for (let parser = 0; parser < dimension; parser++) {
-      sumMainDiagonal += valueFromXO(gridValues[parser][parser])
+      sumMainDiagonal += valueFromXO(gridValues[parser][parser].value)
     }
   }
 
@@ -51,7 +51,7 @@ export const checkWinnerClassic = (
   if (x + y === dimension - 1) {
     for (let parser = 0; parser < dimension; parser++) {
       sumSecondaryDiagonal += valueFromXO(
-        gridValues[parser][dimension - 1 - parser]
+        gridValues[parser][dimension - 1 - parser].value
       )
     }
   }

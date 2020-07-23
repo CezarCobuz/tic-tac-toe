@@ -4,9 +4,14 @@ import React from "react"
 
 import { useWindowDimensions } from "../utils/dimensions"
 
-export const CellComponent = ({ value, onPress = () => {} }) => {
+export const CellComponent = ({
+  value,
+  onPress = () => {},
+  valueColor = "default",
+}) => {
   const { height, width } = useWindowDimensions()
 
+  // TODO: Apply responsive window on parent and all flex: 1 here
   return (
     <div
       key={value}
@@ -16,7 +21,7 @@ export const CellComponent = ({ value, onPress = () => {} }) => {
       onClick={value === 0 ? () => onPress() : () => {}}
     >
       {value !== 0 && (
-        <p className={`symbol ${value === -1 ? "symbolContrast" : ""}`}>
+        <p className={`symbol ${valueColor === 'contrast'? "symbolContrast" : ""}`}>
           {value}
         </p>
       )}

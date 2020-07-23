@@ -4,6 +4,14 @@
   align-items: center;
 }
 
+.selectorTurnMessage {
+  font-size: 22px;
+}
+
+.selectorTurnMessageContrast {
+  color: red;
+}
+
 .selectorItems {
   display: flex;
   width: 100%;

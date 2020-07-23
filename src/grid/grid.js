@@ -16,14 +16,18 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
   )
 
   /** For Order and Chaos */
-  const [selectedSymbol, setSelectedSymbol] = useState('X')
-  console.log('+++ selectedSymbol', selectedSymbol)
+  const [selectedSymbol, setSelectedSymbol] = useState("X")
+  console.log("+++ selectedSymbol", selectedSymbol)
 
   useEffect(() => {
     setGridValues(
-      new Array(dimension).fill(0).map(() => new Array(dimension).fill(0))
+      new Array(dimension)
+        .fill({ value: 0, color: "default" })
+        .map(() => new Array(dimension).fill({ value: 0, color: "default" }))
     )
   }, [dimension])
+
+  console.log("+++ gridValues", gridValues)
 
   return (
     <div>
@@ -38,6 +42,7 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
             {line.map((_square, columnIndex) => (
               <CellComponent
                 key={lineIndex + "" + columnIndex}
+                valueColor={gridValues[lineIndex][columnIndex].color}
                 onPress={() =>
                   handleChange(
                     gameMode,
@@ -51,7 +56,7 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
                     selectedSymbol
                   )
                 }
-                value={gridValues[lineIndex][columnIndex]}
+                value={gridValues[lineIndex][columnIndex].value}
               />
             ))}
           </div>

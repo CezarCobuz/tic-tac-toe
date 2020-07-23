@@ -5,10 +5,15 @@ import React, { useState } from "react"
 import { SymbolSelectorItem } from "./symbol-selector.item"
 
 export const SymbolSelector = ({ player, selectedValue, setSelectedValue }) => {
-  console.log("+++ selectedValue", selectedValue)
   return (
     <div className={"symbolSelectorWrapper"}>
-      <p>{player} turn</p>
+      <p
+        className={`selectorTurnMessage ${
+          player === "Chaos" ? "selectorTurnMessageContrast" : null
+        }`}
+      >
+        {player} turn
+      </p>
       <div className="selectorItems">
         <SymbolSelectorItem
           value="X"
