@@ -1,9 +1,12 @@
 /** x, y last position filled */
-const checkWinner = (gridValues, turn, x, y, dimension) => {
+const checkWinner = (gridValues, turn, x, y, dimension, setWinner) => {
   let sumHorizontal = 0
   let sumVertical = 0
 
   // TODO: use [1, 2, 3, 4].reduce((a, b) => a + b, 0)
+  // sumHorizontal = gridValues[x].reduce((a, b) => a + b, 0)
+  // sumVertical =
+
   for (let parser = 0; parser < dimension; parser++) {
     sumHorizontal += gridValues[x][parser]
     sumVertical += gridValues[parser][y]
@@ -26,20 +29,20 @@ const checkWinner = (gridValues, turn, x, y, dimension) => {
   }
 
   if (sumHorizontal === dimension || sumVertical === dimension) {
-    alert("X WON")
+    setWinner("X")
   }
   if (sumHorizontal === -1 * dimension || sumVertical === -1 * dimension) {
-    alert("O WON")
+    setWinner("O")
   }
 
   if (sumMainDiagonal === dimension || sumSecondaryDiagonal === dimension) {
-    alert("X WON")
+    setWinner("X")
   }
   if (
     sumMainDiagonal === -1 * dimension ||
     sumSecondaryDiagonal === -1 * dimension
   ) {
-    alert("O WON")
+    setWinner("O")
   }
 }
 
@@ -49,7 +52,8 @@ export const handleChange = (
   turn,
   setTurn,
   gridValues,
-  setGridValues
+  setGridValues,
+  setWinner
 ) => {
   const dimension = gridValues.length
 
@@ -69,6 +73,6 @@ export const handleChange = (
 
   // TODO: remove true ||
   if (true || turn > (dimension - 1) * 2) {
-    checkWinner(gridValues, turn, x, y, dimension)
+    checkWinner(gridValues, turn, x, y, dimension, setWinner)
   }
 }

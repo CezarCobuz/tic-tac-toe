@@ -14,4 +14,15 @@
 
 .symbol {
   font-size: 40px;
+  animation-name: symbolIn;
+  animation-duration: 0.5s;
+}
+
+@keyframes symbolIn {
+  from {
+    font-size: 1px;
+  }
+  to {
+    font-size: 40px;
+  }
 }

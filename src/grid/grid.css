@@ -1,9 +1,31 @@
 .gameContainer {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .rowContainer {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
+}
+
+.winnerMessageContainer {
+  position: absolute;
+  top: 0;
+  background-color: teal;
+  left: 42vw;
+}
+
+.winnerMessage {
+  font-size: 40px;
+  animation-name: symbolIn;
+  animation-duration: 0.5s;
+}
+
+@keyframes winnerMessageIn {
+  from {
+    font-size: 1px;
+  }
+  to {
+    font-size: 40px;
+  }
 }
