@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 
 import { CellComponent } from "../cell/cell"
 import { handleChange } from "../game/rules"
+import { SymbolSelector } from "../variations/order-and-chaos/symbol-selector"
 
 export const GridComponent = ({ gameMode = "Classic" }) => {
   const dimension = gameMode === "Order & Chaos" ? 6 : 3
@@ -50,6 +51,7 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
           </div>
         ))}
       </div>
+      {gameMode === "Order & Chaos" && <SymbolSelector />}
     </div>
   )
 }

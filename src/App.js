@@ -13,7 +13,7 @@ const switchGameMode = (currentGameMode, setter) => {
 }
 
 const App = () => {
-  const [gameMode, setGameMode] = useState("Classic")
+  const [gameMode, setGameMode] = useState("Order & Chaos")
 
   console.log("+++ gameMode", gameMode)
 

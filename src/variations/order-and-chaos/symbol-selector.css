@@ -1,0 +1,14 @@
+.symbolSelectorWrapper {
+  background-color: teal;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.selectorItems {
+  background-color: gold;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+}

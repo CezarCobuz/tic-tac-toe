@@ -1,0 +1,16 @@
+.selectorItemWrapper {
+  background-color: ivory;
+  width: 100px;
+  height: 100px;
+  border: 2px solid transparent;
+}
+
+.selectorItemWrapper:hover {
+  background-color: cornflowerblue;
+}
+
+.selectedSelectorItem {
+  border: solid;
+  border-width: 2px;
+  border-color: mediumseagreen;
+}

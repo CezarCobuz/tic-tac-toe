@@ -2,6 +2,8 @@ import "./cell.css"
 
 import React, { useState } from "react"
 
+import { useWindowDimensions } from "../utils/dimensions"
+
 // TODO: Source of an image maybe or an animation
 const translateToXO = (value) => {
   let translatedValue
@@ -16,10 +18,12 @@ const translateToXO = (value) => {
 }
 
 export const CellComponent = ({ value, onPress = () => {} }) => {
+  const { height, width } = useWindowDimensions()
+
   return (
     <div
       key={value}
-      className={`wrapper ${value !== 0 ? "" : "wrapperHovered"}`}
+      className={`wrapper ${height < width ? "wrapperByHeight" : null} ${value !== 0 ? null : "wrapperHovered"}`}
       onClick={value === 0 ? () => onPress() : () => {}}
     >
       {value !== 0 && (
