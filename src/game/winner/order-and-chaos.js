@@ -1,3 +1,5 @@
+import { getCheckerConfig } from "./order-and-chaos.config"
+
 export const checkWinnerOrderAndChaos = (
   gridValues,
   turn,
@@ -6,60 +8,54 @@ export const checkWinnerOrderAndChaos = (
   dimension,
   setWinner
 ) => {
-  console.log("+++ gridValues", gridValues)
-  let counterSameSymbol
-  // setWinner('Chaos')
+  // TODO: setWinner('Chaos')
 
-  // TODO: Generalize bellow for(s) into a generic function that takes start, stop?
+  // TODO: rename x: x is bad
+  const lastPositionPlayer = {
+    x: x,
+    y: y,
+  }
+  const checkerConfig = getCheckerConfig(lastPositionPlayer)
 
-  // Vertical
-  counterSameSymbol = 1
-  for (let index = 0; index < dimension - 1; index++) {
-    if (
-      gridValues[x][index].value !== 0 &&
-      gridValues[x][index].value === gridValues[x][index + 1].value
-    ) {
-      counterSameSymbol++
+  checkerConfig.forEach((singleConfig) => {
+    let { start, stop, advance, condition } = singleConfig
+
+    let counterConsecutiveSymbol = {
+      X: 1,
+      O: 1,
     }
-  }
 
-  if (counterSameSymbol === 5) {
-    setWinner("Order")
-  }
+    console.log('+++ singleConfig', singleConfig)
 
-  // Horizontal
-  counterSameSymbol = 1
-  for (let index = 0; index < dimension - 1; index++) {
-    if (
-      gridValues[index][y].value !== 0 &&
-      gridValues[index][y].value === gridValues[index + 1][y].value
+    // Parse for singleConfig (row / col / diag / antiDiag etc.)
+    for (
+      let parserX = start.row, parserY = start.col;
+      condition(parserX, parserY);
+      parserX += advance.row, parserY += advance.col
     ) {
-      counterSameSymbol++
+      console.log("+++ counterConsecutiveSymbol", counterConsecutiveSymbol)
+      if (gridValues[parserX][parserY].value !== 0) {
+        let currentValue = gridValues[parserX][parserY].value
+        let nextValue = gridValues[parserX + advance.row][parserY + advance.col].value
+        console.log('+++ currentValue', currentValue)
+        console.log('+++ nextValue', nextValue)
+        if (currentValue === nextValue) {
+          console.log('+++ currentValue', currentValue)
+          console.log('+++ counterConsecutiveSymbol[currentValue]', counterConsecutiveSymbol[currentValue])
+          counterConsecutiveSymbol[currentValue]++
+        }
+      }
     }
-  }
 
-  if (counterSameSymbol === 5) {
-    setWinner("Order")
-  }
+    if (counterConsecutiveSymbol.X === 5 || counterConsecutiveSymbol.O === 5) {
+      setWinner("Order")
+    }
+  })
 
+  /** 
   // ==========================================
   // Diagonals - main: top left to bottom right
   // ==========================================
-  const startingDiagonals = [
-    {
-      x: 0,
-      y: 0,
-      // TODO: also stop needed
-    },
-    {
-      x: 0,
-      y: 1,
-    },
-    {
-      x: 1,
-      y: 0,
-    },
-  ]
 
   counterSameSymbol = 1
   for (let index = 0; index < dimension - 1; index++) {
@@ -171,7 +167,7 @@ export const checkWinnerOrderAndChaos = (
     if (
       gridValues[parserX][parserY].value !== 0 &&
       gridValues[parserX][parserY].value ===
-        gridValues[parserX + 1][parserY - 1].value 
+        gridValues[parserX + 1][parserY - 1].value
     ) {
       counterSameSymbol++
     }
@@ -180,4 +176,5 @@ export const checkWinnerOrderAndChaos = (
   if (counterSameSymbol === 5) {
     setWinner("Order")
   }
+  */
 }
