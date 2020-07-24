@@ -125,7 +125,7 @@ export const checkWinnerOrderAndChaos = (
   counterSameSymbol = 1
   for (
     let parserX = 0, parserY = dimension - 1;
-    parserX < dimension - 2 && parserY > 1; // start + 1 where start = 0
+    parserX < 5 && parserY > 0; // start + 1 where start = 0
     parserX++, parserY--
   ) {
     if (

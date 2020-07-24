@@ -6,3 +6,7 @@
   justify-content: space-around;
   flex-direction: column;
 }
+
+.rulesUrl {
+  cursor: pointer;
+}
