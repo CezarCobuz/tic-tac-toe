@@ -1,6 +1,6 @@
 .selectorItemWrapper {
-  width: 100px;
-  height: 100px;
+  width: 10vmin;
+  height: 10vmin;
   border-radius: 5px;
   border: 2px solid grey;
   display: flex;
@@ -20,7 +20,7 @@
 }
 
 .symbolSelectorItemText {
-  font-size: 40px;
+  font-size: 8vmin;
   color: grey;
 }
 

@@ -1,16 +1,11 @@
 .wrapper {
-  width: 7vw;
-  height: 7vw;
+  width: 7vmin;
+  height: 7vmin;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: lightgray;
-  margin: 5px;
-}
-
-.wrapperByHeight {
-  width: 7vh;
-  height: 7vh;
+  margin: 0.5vmin;
 }
 
 .wrapperHovered:hover {
@@ -19,7 +14,7 @@
 }
 
 .symbol {
-  font-size: 40px;
+  font-size: 6.5vmin;
   animation-name: symbolIn;
   animation-duration: 0.5s;
 }
@@ -30,9 +25,9 @@
 
 @keyframes symbolIn {
   from {
-    font-size: 1px;
+    font-size: 0px;
   }
   to {
-    font-size: 40px;
+    font-size: 6.5vmin;
   }
 }
