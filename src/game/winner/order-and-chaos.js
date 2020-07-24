@@ -6,29 +6,38 @@ export const checkWinnerOrderAndChaos = (
   dimension,
   setWinner
 ) => {
-  const symbolPlaced = gridValues[x][y].value
-
+  let counterSameSymbol
   // setWinner('Chaos')
 
-  // +1 twice gets to 1
-  // TODO: Further investigate the overall checker
-  let counterSameSymbol = -1
   // Vertical
-  for (let index = y; index < dimension; index++) {
-    if (gridValues[x][index].value === symbolPlaced) {
+  counterSameSymbol = 1
+  for (let index = 0; index < dimension - 1; index++) {
+    if (
+      gridValues[x][index].value !== 0 &&
+      gridValues[x][index].value === gridValues[x][index + 1].value
+    ) {
       counterSameSymbol++
     }
   }
 
-  for (let index = y; index >= 0; index--) {
-    if (gridValues[x][index].value === symbolPlaced) {
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
+  }
+
+  // Horizontal
+  counterSameSymbol = 1
+  for (let index = 0; index < dimension - 1; index++) {
+    if (
+      gridValues[index][y].value !== 0 &&
+      gridValues[index][y].value === gridValues[index + 1][y].value
+    ) {
       counterSameSymbol++
     }
+  }
+
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
   }
 
   console.log("+++ counterSameSymbol", counterSameSymbol)
-
-  if (counterSameSymbol === 5) {
-    setWinner("TEST")
-  }
 }
