@@ -24,7 +24,21 @@ export const getCheckerConfig = (lastPositionPlayed) => {
     },
 
     // On column TODO:
-
+    {
+      start: {
+        row: 0,
+        col: y,
+      },
+      stop: {
+        row: 5,
+        col: y,
+      },
+      advance: {
+        row: 1, // const
+        col: 0, // y++
+      },
+      condition: (parserX, parserY) => parserX < 5,
+    },
   ]
 
   return config

@@ -25,23 +25,18 @@ export const checkWinnerOrderAndChaos = (
       O: 1,
     }
 
-    console.log('+++ singleConfig', singleConfig)
-
     // Parse for singleConfig (row / col / diag / antiDiag etc.)
     for (
       let parserX = start.row, parserY = start.col;
       condition(parserX, parserY);
       parserX += advance.row, parserY += advance.col
     ) {
-      console.log("+++ counterConsecutiveSymbol", counterConsecutiveSymbol)
       if (gridValues[parserX][parserY].value !== 0) {
         let currentValue = gridValues[parserX][parserY].value
-        let nextValue = gridValues[parserX + advance.row][parserY + advance.col].value
-        console.log('+++ currentValue', currentValue)
-        console.log('+++ nextValue', nextValue)
+        let nextValue =
+          gridValues[parserX + advance.row][parserY + advance.col].value
+
         if (currentValue === nextValue) {
-          console.log('+++ currentValue', currentValue)
-          console.log('+++ counterConsecutiveSymbol[currentValue]', counterConsecutiveSymbol[currentValue])
           counterConsecutiveSymbol[currentValue]++
         }
       }
