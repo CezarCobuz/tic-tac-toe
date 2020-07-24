@@ -45,9 +45,4 @@ export const checkWinnerOrderAndChaos = (
       setWinner("Order")
     }
   })
-
-  // TODO: Further investigate edge cases
-  if (turn === 35) {
-    setWinner("Chaos")
-  }
 }
