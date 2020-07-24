@@ -10,12 +10,10 @@ export const checkWinnerOrderAndChaos = (
 ) => {
   // TODO: setWinner('Chaos')
 
-  // TODO: rename x: x is bad
   const lastPositionPlayer = {
     x,
     y,
   }
-  console.log('+++ lastPositionPlayer', lastPositionPlayer)
   const checkerConfig = getCheckerConfig(lastPositionPlayer)
 
   checkerConfig.forEach((singleConfig) => {
@@ -47,4 +45,9 @@ export const checkWinnerOrderAndChaos = (
       setWinner("Order")
     }
   })
+
+  // TODO: Further investigate edge cases
+  if (turn === 35) {
+    setWinner("Chaos")
+  }
 }

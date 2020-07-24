@@ -30,6 +30,13 @@ export const GridComponent = ({ gameMode = "Classic" }) => {
     // TODO: Game mode rather than dimension, as dimension can be the same but game mode change
   }, [dimension])
 
+  // TODO: Further investigate edge cases
+  useEffect(() => {
+    if (gameMode==="Order & Chaos" && turn >= 36 && winner===null) {
+      setWinner('Chaos')
+    }
+  }, [turn])
+
   return (
     <div>
       {winner && (
