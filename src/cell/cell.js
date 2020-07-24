@@ -2,8 +2,6 @@ import "./cell.css"
 
 import React from "react"
 
-import { useWindowDimensions } from "../utils/dimensions"
-
 export const CellComponent = ({
   value,
   onPress = () => {},

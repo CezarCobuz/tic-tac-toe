@@ -1,6 +1,6 @@
 import "./symbol-selector.css"
 
-import React, { useState } from "react"
+import React from "react"
 
 import { SymbolSelectorItem } from "./symbol-selector.item"
 
