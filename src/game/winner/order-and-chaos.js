@@ -42,7 +42,9 @@ export const checkWinnerOrderAndChaos = (
     setWinner("Order")
   }
 
+  // ==========================================
   // Diagonals - main: top left to bottom right
+  // ==========================================
   const startingDiagonals = [
     {
       x: 0,
@@ -105,6 +107,71 @@ export const checkWinnerOrderAndChaos = (
       gridValues[parserX][parserY].value !== 0 &&
       gridValues[parserX][parserY].value ===
         gridValues[parserX + 1][parserY + 1].value
+    ) {
+      counterSameSymbol++
+    }
+  }
+
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
+  }
+
+  // ==========================================
+  // Diagonals - anti: top right to bottom left
+  // ==========================================
+
+  // For a 6x6 grid:
+  // 0, 5 start, stop: 5,0
+  counterSameSymbol = 1
+  for (
+    let parserX = 0, parserY = dimension - 1;
+    parserX < dimension - 2 && parserY > 1; // start + 1 where start = 0
+    parserX++, parserY--
+  ) {
+    if (
+      gridValues[parserX][parserY].value !== 0 &&
+      gridValues[parserX][parserY].value ===
+        gridValues[parserX + 1][parserY - 1].value // next
+    ) {
+      counterSameSymbol++
+    }
+  }
+
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
+  }
+
+  // 0, 4 start, stop: 4,0
+  counterSameSymbol = 1
+  for (
+    let parserX = 0, parserY = dimension - 2;
+    parserX < 4 && parserY > 0;
+    parserX++, parserY--
+  ) {
+    if (
+      gridValues[parserX][parserY].value !== 0 &&
+      gridValues[parserX][parserY].value ===
+        gridValues[parserX + 1][parserY - 1].value
+    ) {
+      counterSameSymbol++
+    }
+  }
+
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
+  }
+
+  // 1, 5 start, stop: 5,1
+  counterSameSymbol = 1
+  for (
+    let parserX = 1, parserY = 5;
+    parserX < 5 && parserY > 1;
+    parserX++, parserY--
+  ) {
+    if (
+      gridValues[parserX][parserY].value !== 0 &&
+      gridValues[parserX][parserY].value ===
+        gridValues[parserX + 1][parserY - 1].value 
     ) {
       counterSameSymbol++
     }
