@@ -6,8 +6,11 @@ export const checkWinnerOrderAndChaos = (
   dimension,
   setWinner
 ) => {
+  console.log("+++ gridValues", gridValues)
   let counterSameSymbol
   // setWinner('Chaos')
+
+  // TODO: Generalize bellow for(s) into a generic function that takes start, stop?
 
   // Vertical
   counterSameSymbol = 1
@@ -39,5 +42,75 @@ export const checkWinnerOrderAndChaos = (
     setWinner("Order")
   }
 
-  console.log("+++ counterSameSymbol", counterSameSymbol)
+  // Diagonals - main: top left to bottom right
+  const startingDiagonals = [
+    {
+      x: 0,
+      y: 0,
+      // TODO: also stop needed
+    },
+    {
+      x: 0,
+      y: 1,
+    },
+    {
+      x: 1,
+      y: 0,
+    },
+  ]
+
+  counterSameSymbol = 1
+  for (let index = 0; index < dimension - 1; index++) {
+    if (
+      gridValues[index][index].value !== 0 &&
+      gridValues[index][index].value === gridValues[index + 1][index + 1].value
+    ) {
+      counterSameSymbol++
+    }
+  }
+
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
+  }
+
+  // For a 6x6 grid:
+  // 0, 1 start, stop: 4,5
+  counterSameSymbol = 1
+  for (
+    let parserX = 0, parserY = 1;
+    parserX < dimension - 2 && parserY < dimension - 1;
+    parserX++, parserY++
+  ) {
+    if (
+      gridValues[parserX][parserY].value !== 0 &&
+      gridValues[parserX][parserY].value ===
+        gridValues[parserX + 1][parserY + 1].value
+    ) {
+      counterSameSymbol++
+    }
+  }
+
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
+  }
+
+  // 1, 0 start, stop: 5,4
+  counterSameSymbol = 1
+  for (
+    let parserX = 1, parserY = 0;
+    parserX < dimension - 1 && parserY < dimension - 2;
+    parserX++, parserY++
+  ) {
+    if (
+      gridValues[parserX][parserY].value !== 0 &&
+      gridValues[parserX][parserY].value ===
+        gridValues[parserX + 1][parserY + 1].value
+    ) {
+      counterSameSymbol++
+    }
+  }
+
+  if (counterSameSymbol === 5) {
+    setWinner("Order")
+  }
 }
