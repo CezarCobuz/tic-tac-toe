@@ -1,16 +1,41 @@
 import "./grid.css"
 
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 
 import { CellComponent } from "../cell/cell"
 import { handleChange } from "../game/rules"
+import { SymbolSelector } from "../variations/order-and-chaos/symbol-selector"
 
-export const GridComponent = ({ dimension = 3 }) => {
+export const GridComponent = ({ gameMode = "Classic" }) => {
+  const dimension = gameMode === "Order & Chaos" ? 6 : 3
+
   const [turn, setTurn] = useState(0)
   const [winner, setWinner] = useState(null)
   const [gridValues, setGridValues] = useState(
     new Array(dimension).fill(0).map(() => new Array(dimension).fill(0))
   )
+
+  /** For Order and Chaos */
+  const [selectedSymbol, setSelectedSymbol] = useState("X")
+
+  useEffect(() => {
+    // Resetters
+    setGridValues(
+      new Array(dimension)
+        .fill({ value: 0, color: "default" })
+        .map(() => new Array(dimension).fill({ value: 0, color: "default" }))
+    )
+    setTurn(0)
+    setWinner(null)
+    // TODO: Game mode rather than dimension, as dimension can be the same but game mode change
+  }, [dimension])
+
+  // TODO: Further investigate edge cases
+  useEffect(() => {
+    if (gameMode==="Order & Chaos" && turn >= 36 && winner===null) {
+      setWinner('Chaos')
+    }
+  }, [turn])
 
   return (
     <div>
@@ -22,26 +47,37 @@ export const GridComponent = ({ dimension = 3 }) => {
       <div className="gameContainer">
         {gridValues.map((line, lineIndex) => (
           <div key={lineIndex} className="rowContainer">
-            {line.map((_square, squareIndex) => (
+            {line.map((_square, columnIndex) => (
               <CellComponent
-                key={lineIndex + "" + squareIndex}
+                key={lineIndex + "" + columnIndex}
+                valueColor={gridValues[lineIndex][columnIndex].color}
                 onPress={() =>
                   handleChange(
+                    gameMode,
                     lineIndex,
-                    squareIndex,
+                    columnIndex,
                     turn,
                     setTurn,
                     gridValues,
                     setGridValues,
-                    setWinner
+                    setWinner,
+                    selectedSymbol
                   )
                 }
-                value={gridValues[lineIndex][squareIndex]}
+                value={gridValues[lineIndex][columnIndex].value}
               />
             ))}
           </div>
         ))}
       </div>
+      {/* Game mode: Order & Chaos */}
+      {gameMode === "Order & Chaos" && (
+        <SymbolSelector
+          player={turn % 2 === 0 ? "Order" : "Chaos"}
+          selectedValue={selectedSymbol}
+          setSelectedValue={setSelectedSymbol}
+        />
+      )}
     </div>
   )
 }

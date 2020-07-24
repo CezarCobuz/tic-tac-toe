@@ -1,31 +1,28 @@
 import "./cell.css"
 
-import React, { useState } from "react"
+import React from "react"
 
-// TODO: Source of an image maybe or an animation
-const translateToXO = (value) => {
-  let translatedValue
+import { useWindowDimensions } from "../utils/dimensions"
 
-  if (value === 1) {
-    translatedValue = "X"
-  } else {
-    translatedValue = "O"
-  }
+export const CellComponent = ({
+  value,
+  onPress = () => {},
+  valueColor = "default",
+}) => {
+  const { height, width } = useWindowDimensions()
 
-  return translatedValue
-}
-
-export const CellComponent = ({ value, onPress = () => {} }) => {
+  // TODO: Apply responsive window on parent and all flex: 1 here
   return (
     <div
       key={value}
-      className={`wrapper ${value !== 0 ? "" : "wrapperHovered"}`}
+      className={`wrapper ${height < width ? "wrapperByHeight" : null} ${
+        value !== 0 ? null : "wrapperHovered"
+      }`}
       onClick={value === 0 ? () => onPress() : () => {}}
     >
       {value !== 0 && (
-        <p className={`symbol ${value === -1 ? "symbolContrast" : ""}`}>
-          {" "}
-          {translateToXO(value)}
+        <p className={`symbol ${valueColor === 'contrast'? "symbolContrast" : ""}`}>
+          {value}
         </p>
       )}
     </div>

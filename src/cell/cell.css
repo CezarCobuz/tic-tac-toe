@@ -1,6 +1,6 @@
 .wrapper {
-  width: 100px;
-  height: 100px;
+  width: 7vw;
+  height: 7vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,8 +8,14 @@
   margin: 5px;
 }
 
+.wrapperByHeight {
+  width: 7vh;
+  height: 7vh;
+}
+
 .wrapperHovered:hover {
   background-color: cornflowerblue;
+  cursor: pointer;
 }
 
 .symbol {

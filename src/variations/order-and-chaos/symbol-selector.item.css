@@ -1,0 +1,29 @@
+.selectorItemWrapper {
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  border: 2px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectorItemWrapper:hover {
+  background-color: greenyellow;
+  cursor: pointer;
+}
+
+.selectedSelectorItem {
+  border: solid;
+  border-width: 2px;
+  border-color: mediumseagreen;
+}
+
+.symbolSelectorItemText {
+  font-size: 40px;
+  color: grey;
+}
+
+.selectedSelectorItemText {
+  color: mediumseagreen;
+}
