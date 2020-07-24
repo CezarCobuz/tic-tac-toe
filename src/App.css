@@ -10,3 +10,7 @@
 .rulesUrl {
   cursor: pointer;
 }
+
+.rulesUrl:hover {
+  color: limegreen;
+}
